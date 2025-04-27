@@ -1,8 +1,0 @@
-sdfsfsdfsf
-tdykty
-<<<<<<< HEAD
-iupuipu
-=======
-
-
->>>>>>> 02042a5c538133b661f489e8db134085bf8546b1
