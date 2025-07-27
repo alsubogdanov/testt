@@ -1,4 +1,226 @@
-text from Mike
-text from Mike2
-text from Mike3
-text from Mike4
+.faq__wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.9s ease;
+  padding: 0 2rem;
+}
+.faq__question {
+  padding: 1rem 2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.faq__question:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transition: all 0.3s ease;
+}
+.faq__item.active .faq__answer {
+  max-height: 200px;
+  transition: all 0.9s ease;
+}
+.faq__item.active .faq__question {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+
+
+<section class="faq">
+  <div class="container">
+    <div class="faq__wrap">
+      <div class="faq__item">
+        <div class="faq__question">1Lorem ipsum dolor sit amet.</div>
+        <div class="faq__answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed minima praesentium provident deleniti molestiae explicabo? Inventore facere sint iste excepturi, aliquam consectetur non odio nostrum repellat, expedita ex sunt laudantium esse voluptate aliquid magnam distinctio? Omnis porro aut perspiciatis molestias.          </div>
+      </div>
+      <div class="faq__item">
+        <div class="faq__question">2Lorem ipsum dolor sit amet consectetur adipisicing.</div>
+        <div class="faq__answer">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos tenetur at, quos repellendus laudantium cumque.
+        </div>
+      </div>
+      <div class="faq__item">
+        <div class="faq__question">3Lorem ipsum dolor sit.</div>
+        <div class="faq__answer">
+Lorem ipsum dolor sit.            </div>
+    </div>
+  </div>        
+</section>
+	
+	
+document.querySelector(".faq").addEventListener("click", function (e) {
+  const question = e.target.closest(".faq-question");
+  if (!question) return; // клик не по вопросу
+
+  const item = question.parentElement;
+  item.classList.toggle("active");
+});
+
+
+
+<section class="photo-gal">
+  <div class="photo-card">
+    <img src="assets/img/1.jpg" alt="Фото 1" />
+    <div class="overlay">
+      <i class="icon">★</i>
+      <span>Описание</span>
+    </div>
+  </div>
+  <div class="photo-card">
+    <img src="assets/img/2.jpg" alt="Фото 2" />
+    <div class="overlay">
+      <i class="icon">★</i>
+      <span>Описание</span>
+    </div>
+  </div>
+  <div class="photo-card">
+    <img src="assets/img/3.jpg" alt="Фото 3" />
+    <div class="overlay">
+      <i class="icon">★</i>
+      <span>Описание</span>
+    </div>
+  </div>
+  <div class="photo-card">
+    <img src="assets/img/33.jpg" alt="Фото 4" />
+    <div class="overlay">
+      <i class="icon">★</i>
+      <span>Описание</span>
+    </div>
+  </div>
+</section>
+	  
+	  
+	  
+	  
+.photo-gal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.photo-card {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-card .overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: bottom 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.photo-card:hover .overlay {
+  bottom: 0;
+}
+
+.icon {
+  font-style: normal;
+  font-size: 20px;
+}
+
+
+....
+<div class="tabs_mobile">
+  <div class="tab_mobile d-flex g1">
+    <button id="tabTrigger" class="tab">
+    Образование
+    </button>
+  </div>
+  <div id="tabDropdown" class="tab-dropdown hidden">
+    <button class="tab-option" data-ind="0">Образование</button>
+    <button class="tab-option" data-ind="1">Опыт работы</button>
+    <button class="tab-option" data-ind="2">Награды</button>
+  </div>
+</div>
+.tabs_mobile {
+  position: relative;
+}
+.tab-dropdown.hidden {
+  display: none;
+}
+.tab-dropdown {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--light-color);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-size: 2.5rem;
+  border: 1px solid #c9c7d2;
+  border-top: none;
+}
+.tab-option {
+  font-size: 1.6rem;
+}
+
+
+const tabTrigger = document.getElementById("tabTrigger");
+const tabDropdown = document.getElementById("tabDropdown");
+
+tabTrigger.addEventListener("click", () => {
+  tabDropdown.classList.toggle("hidden");
+});
+
+tabDropdown.addEventListener("click", (e) => {
+  if (e.target && e.target.classList.contains("tab-option")) {
+    const index = e.target.getAttribute("data-ind");
+    showTab(index);
+
+    // обновим текст главной кнопки
+    tabTrigger.textContent = e.target.textContent;
+
+    // спрячем меню
+    tabDropdown.classList.add("hidden");
+  }
+});
+
+
+
+<div class="tabs_mobile">
+	<select id="tabsSelect">
+	  <option value="0">Образование</option>
+	  <option value="1">Опыт работы</option>
+	  <option value="2">Награды</option>
+	</select>
+</div>
+
+const tabsSelect = document.getElementById("tabsSelect");
+
+if (tabsSelect) {
+  tabsSelect.addEventListener("change", (e) => {
+    const selectedIndex = e.target.value;
+    showTab(selectedIndex);
+  });
+}
+
+
+
+
+
